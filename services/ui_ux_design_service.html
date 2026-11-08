@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>UI/UX Design Services — UIUX Designing Services</title>
+
+  <meta name="description"
+    content="We redesign confusing digital products into clear, intuitive experiences that reduce friction, improve usability, and help your business convert more effectively." />
+
+  <!-- ============================================================ BASE + COMPONENT STYLES ============================================================ -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- ============================================================ FONTS ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ============================================================ TAILWIND (Play CDN) ============================================================ -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#0B0B0C',
+            surface: '#F5F5F3',
+            ink: '#111112',
+            paper: '#F5F5F3',
+            muted: '#9A9A97',
+            accent: '#7FE85A',
+          },
+          fontFamily: {
+            display: ['"Clash Display"', 'Inter', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          borderRadius: {
+            card: '20px',
+            pill: '9999px',
+          },
+          maxWidth: {
+            shell: '1200px',
+          },
+        },
+      },
+    };
+  </script>
+
+</head>
+
+<body class="font-sans bg-canvas text-paper antialiased">
+
+
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content">
+
+    <!-- ============================================================ STICKY NAV ============================================================ -->
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 border-b border-transparent py-4">
+      <nav class="shell flex items-center justify-between" aria-label="Primary">
+        <a href="/" class="flex items-center gap-2 font-display text-lg font-semibold tracking-tight">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-accent" aria-hidden="true"></span>
+          UIUX<span class="text-muted font-medium">Designing</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-paper/80">
+          <div class="has-dropdown relative">
+            <button class="nav-link flex items-center gap-1 hover:text-paper transition-colors" aria-haspopup="true"
+              aria-expanded="false">
+              Services
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="dropdown absolute left-0 top-full pt-3 w-64" role="menu">
+              <div class="nav-menu p-2">
+                <a href="#" class="block px-3 py-2 rounded-lg hover:bg-white/5 transition-colors" role="menuitem">UI/UX
+                  Design</a>
+                <a href="#" class="block px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                  role="menuitem">Product Design</a>
+                <a href="#" class="block px-3 py-2 rounded-lg hover:bg-white/5 transition-colors" role="menuitem">Design
+                  Systems</a>
+                <a href="#" class="block px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                  role="menuitem">Frontend Development</a>
+                <a href="#" class="block px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+                  role="menuitem">Product Optimization</a>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="nav-link hover:text-paper transition-colors">Work</a>
+          <a href="#" class="nav-link hover:text-paper transition-colors">About</a>
+          <a href="#" class="nav-link hover:text-paper transition-colors">Insights</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="#book" class="btn btn-primary hidden sm:inline-flex">Book a Free Call</a>
+          <button id="hamburger"
+            class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-pill border border-paper/20"
+            aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+            <svg class="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <svg class="close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" hidden class="md:hidden fixed inset-x-0 bottom-0 z-40 overflow-y-auto"
+      style="top: var(--nav-height, 76px);">
+      <div class="m-glow" aria-hidden="true"></div>
+      <div class="m-shell">
+        <p class="m-eyebrow m-anim" style="animation-delay:.04s">Menu</p>
+        <nav class="m-list" aria-label="Mobile">
+          <div class="m-anim" style="animation-delay:.09s">
+            <button id="mServicesBtn" type="button" class="m-item" aria-expanded="false" aria-controls="mServicesPanel">
+              <span class="m-item-label">Services</span>
+              <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div id="mServicesPanel" hidden class="m-sub">
+              <a href="#" class="m-sublink">UI/UX Design</a>
+              <a href="#" class="m-sublink">Product Design</a>
+              <a href="#" class="m-sublink">Design Systems</a>
+              <a href="#" class="m-sublink">Frontend Development</a>
+              <a href="#" class="m-sublink">Product Optimization</a>
+            </div>
+          </div>
+          <a href="#" class="m-item m-anim" style="animation-delay:.14s"><span class="m-item-label">Work</span><span
+              class="m-arrow" aria-hidden="true">→</span></a>
+          <a href="#" class="m-item m-anim" style="animation-delay:.19s"><span class="m-item-label">About</span><span
+              class="m-arrow" aria-hidden="true">→</span></a>
+          <a href="#" class="m-item m-anim" style="animation-delay:.24s"><span class="m-item-label">Insights</span><span
+              class="m-arrow" aria-hidden="true">→</span></a>
+        </nav>
+        <div class="m-foot m-anim" style="animation-delay:.3s">
+          <a href="#book" class="btn btn-primary w-full justify-center text-base">Book a Free Call</a>
+          <div class="m-foot-row">
+            <a href="mailto:hello@uiuxdesigningservices.com" class="m-mail">hello@uiuxdesigningservices.com</a>
+            <div class="m-social">
+              <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+                  aria-hidden="true">
+                  <path
+                    d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 005 0 2.5 2.5 0 00-2.52-2.5zM3 8.98h4v12H3v-12zM9.5 8.98h3.8v1.64h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v6.31h-4v-5.6c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7h-4v-12z" />
+                </svg></a>
+              <a href="#" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                  aria-hidden="true">
+                  <path
+                    d="M18.9 2H22l-7.5 8.6L23 22h-6.9l-5.4-7-6.2 7H1.4l8-9.2L1 2h7l4.9 6.5L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z" />
+                </svg></a>
+              <a href="#" aria-label="Dribbble"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M5 8c4 1 9 2 13 6M9 3.5c3 4 5 9 5.5 16M20 9c-5 0-10 1-14 4" stroke="currentColor"
+                    stroke-width="1.6" />
+                </svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- ============================================================ 1 · HERO (dark) ============================================================ -->
+      <section class="relative overflow-hidden pt-36 pb-16 md:pt-44 md:pb-24">
+        <div class="blob blob-accent w-[480px] h-[480px] -top-20 left-1/2 -translate-x-1/2 opacity-80"
+          aria-hidden="true"></div>
+
+        <div class="shell relative z-10">
+          <!-- Breadcrumb -->
+          <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+            <a href="#">Home</a><span aria-hidden="true">/</span>
+            <a href="#">Services</a><span aria-hidden="true">/</span>
+            UI/UX Design
+          </nav>
+
+          <div class="max-w-3xl mt-10">
+            <p class="eyebrow text-accent reveal">UI/UX Design Services</p>
+            <h1 class="h-display h-hero mt-6 reveal">
+              Interfaces your users actually <span class="accent-word">understand</span>.
+            </h1>
+            <p class="mt-7 text-lg md:text-xl text-muted max-w-2xl reveal" style="line-height:1.7">
+              We redesign confusing digital products into clear, intuitive experiences that reduce friction, improve
+              usability, and help your business convert more effectively.
+            </p>
+            <div class="mt-9 flex flex-col sm:flex-row items-start gap-3 reveal">
+              <a href="#book" class="btn btn-primary">Book a Free Call</a>
+              <a href="#work" class="btn btn-ghost-dark">See relevant work</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ 2 · WHAT WE DO (light) ============================================================ -->
+      <section id="what-we-do" class="bg-surface text-ink section-pad">
+        <div class="shell">
+          <div class="max-w-2xl reveal">
+            <p class="eyebrow text-ink/50">What we do</p>
+            <h2 class="h-display h-section mt-4">Redesign the experience,<br class="hidden md:block"> not just
+              the&nbsp;screens</h2>
+            <p class="mt-5 text-ink/60 max-w-xl" style="line-height:1.7">
+              We look at how people actually use your product — where they hesitate, where they drop off, where the
+              interface gets in the way. Then we redesign those experiences so they work.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Capability 1 -->
+            <div class="card-light card-hover p-7 cap-card">
+              <div class="cap-icon w-10 h-10 rounded-xl grid place-items-center mb-5" style="background: rgba(127,232,90,0.12);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z" stroke="#3f9e2e" stroke-width="2" />
+                  <circle cx="12" cy="12" r="3" stroke="#3f9e2e" stroke-width="2" />
+                </svg>
+              </div>
+              <h3 class="cap-title font-display text-xl font-semibold">UX Audit &amp; Review</h3>
+              <p class="cap-desc mt-3 text-ink/65 leading-relaxed">We walk through every screen your users touch, map the
+                friction points, and document exactly what needs to change and why.</p>
+            </div>
+
+            <!-- Capability 2 -->
+            <div class="card-light card-hover p-7 cap-card">
+              <div class="cap-icon w-10 h-10 rounded-xl grid place-items-center mb-5" style="background: rgba(127,232,90,0.12);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3v18M3 12h18" stroke="#3f9e2e" stroke-width="2" stroke-linecap="round" />
+                  <rect x="5" y="5" width="14" height="14" rx="2" stroke="#3f9e2e" stroke-width="2" opacity="0.4" />
+                </svg>
+              </div>
+              <h3 class="cap-title font-display text-xl font-semibold">Interface Redesign</h3>
+              <p class="cap-desc mt-3 text-ink/65 leading-relaxed">We restructure layouts, refine hierarchy, and redesign key
+                screens so your product communicates clearly at every step.</p>
+            </div>
+
+            <!-- Capability 3 -->
+            <div class="card-light card-hover p-7 cap-card">
+              <div class="cap-icon w-10 h-10 rounded-xl grid place-items-center mb-5" style="background: rgba(127,232,90,0.12);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z" stroke="#3f9e2e" stroke-width="2"
+                    stroke-linejoin="round" />
+                  <path d="M14 14h6v6h-6z" stroke="#3f9e2e" stroke-width="2" stroke-linejoin="round" opacity="0.4" />
+                </svg>
+              </div>
+              <h3 class="cap-title font-display text-xl font-semibold">User Flow Design</h3>
+              <p class="cap-desc mt-3 text-ink/65 leading-relaxed">We map, simplify, and redesign multi-step journeys —
+                onboarding, sign-up, checkout — so users complete them without friction.</p>
+            </div>
+
+            <!-- Capability 4 -->
+            <div class="card-light card-hover p-7 cap-card">
+              <div class="cap-icon w-10 h-10 rounded-xl grid place-items-center mb-5" style="background: rgba(127,232,90,0.12);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="4" width="20" height="16" rx="3" stroke="#3f9e2e" stroke-width="2" />
+                  <path d="M8 4V2M16 4V2" stroke="#3f9e2e" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                  <path d="M6 11h4M6 15h8" stroke="#3f9e2e" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3 class="cap-title font-display text-xl font-semibold">Dashboard &amp; Data UI</h3>
+              <p class="cap-desc mt-3 text-ink/65 leading-relaxed">We organize complex information — dashboards, reports,
+                analytics views — so the most important data is the easiest to find.</p>
+            </div>
+
+            <!-- Capability 5 -->
+            <div class="card-light card-hover p-7 cap-card">
+              <div class="cap-icon w-10 h-10 rounded-xl grid place-items-center mb-5" style="background: rgba(127,232,90,0.12);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M17 3a2.83 2.83 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" stroke="#3f9e2e" stroke-width="2"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3 class="cap-title font-display text-xl font-semibold">Interaction &amp; Micro-UX</h3>
+              <p class="cap-desc mt-3 text-ink/65 leading-relaxed">We design the small details that make a product feel polished
+                — hover states, transitions, loading patterns, feedback, and empty states.</p>
+            </div>
+
+            <!-- Capability 6 -->
+            <div class="card-light card-hover p-7 cap-card">
+              <div class="cap-icon w-10 h-10 rounded-xl grid place-items-center mb-5" style="background: rgba(127,232,90,0.12);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <rect x="5" y="2" width="14" height="20" rx="3" stroke="#3f9e2e" stroke-width="2" />
+                  <path d="M10 18h4" stroke="#3f9e2e" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                </svg>
+              </div>
+              <h3 class="cap-title font-display text-xl font-semibold">Responsive &amp; Mobile UX</h3>
+              <p class="cap-desc mt-3 text-ink/65 leading-relaxed">We ensure every screen works across devices — not just scaled
+                down, but genuinely usable on phones, tablets, and desktops.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ 3 · THE PROBLEM (dark) ============================================================ -->
+      <section class="relative overflow-hidden section-pad">
+        <div class="shell relative z-10">
+          <div class="max-w-2xl reveal">
+            <p class="eyebrow text-accent">Sound familiar?</p>
+            <h2 class="h-display h-section mt-4">Your product works. But&nbsp;users&nbsp;struggle.</h2>
+            <p class="mt-5 text-muted max-w-xl" style="line-height:1.7">
+              You've built something real — but feedback keeps pointing to the same problems. Users get lost, features
+              go unused, and support tickets pile up.
+            </p>
+          </div>
+
+          <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Problem 1 -->
+            <div class="card-dark card-hover p-6 flex gap-4 items-start prob-card">
+              <div class="prob-icon problem-icon" style="background: rgba(127,232,90,0.1);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 18l6-6-6-6" stroke="#7FE85A" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M15 18l-6-6 6-6" stroke="#7FE85A" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" opacity="0.4" />
+                </svg>
+              </div>
+              <div class="prob-text min-w-0">
+                <h3 class="font-display text-lg font-semibold text-paper">Confusing flows</h3>
+                <p class="mt-1.5 text-muted text-sm leading-relaxed">Users can't find their way through multi-step
+                  processes. They give up before they finish.</p>
+              </div>
+            </div>
+
+            <!-- Problem 2 -->
+            <div class="card-dark card-hover p-6 flex gap-4 items-start prob-card">
+              <div class="prob-icon problem-icon" style="background: rgba(127,232,90,0.1);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3" stroke="#7FE85A" stroke-width="2" opacity="0.4" />
+                  <path d="M8 12h8M12 8v8" stroke="#7FE85A" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="prob-text min-w-0">
+                <h3 class="font-display text-lg font-semibold text-paper">Unclear interfaces</h3>
+                <p class="mt-1.5 text-muted text-sm leading-relaxed">Labels don't explain, layouts don't guide, and
+                  users have to guess what to do next.</p>
+              </div>
+            </div>
+
+            <!-- Problem 3 -->
+            <div class="card-dark card-hover p-6 flex gap-4 items-start prob-card">
+              <div class="prob-icon problem-icon" style="background: rgba(127,232,90,0.1);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 6h16M4 12h10M4 18h14" stroke="#7FE85A" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="prob-text min-w-0">
+                <h3 class="font-display text-lg font-semibold text-paper">Poor hierarchy</h3>
+                <p class="mt-1.5 text-muted text-sm leading-relaxed">Everything competes for attention. Users can't tell
+                  what matters from what doesn't.</p>
+              </div>
+            </div>
+
+            <!-- Problem 4 -->
+            <div class="card-dark card-hover p-6 flex gap-4 items-start prob-card">
+              <div class="prob-icon problem-icon" style="background: rgba(127,232,90,0.1);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="#7FE85A" stroke-width="2" opacity="0.4" />
+                  <path d="M12 8v4l3 3" stroke="#7FE85A" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="prob-text min-w-0">
+                <h3 class="font-display text-lg font-semibold text-paper">Too much friction</h3>
+                <p class="mt-1.5 text-muted text-sm leading-relaxed">Sign-ups take too long, onboarding feels heavy, and
+                  every extra click costs you users.</p>
+              </div>
+            </div>
+
+            <!-- Problem 5 -->
+            <div class="card-dark card-hover p-6 flex gap-4 items-start prob-card">
+              <div class="prob-icon problem-icon" style="background: rgba(127,232,90,0.1);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#7FE85A" stroke-width="2" stroke-linejoin="round"
+                    opacity="0.4" />
+                  <path d="M2 17l10 5 10-5" stroke="#7FE85A" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M2 12l10 5 10-5" stroke="#7FE85A" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="prob-text min-w-0">
+                <h3 class="font-display text-lg font-semibold text-paper">Usability debt</h3>
+                <p class="mt-1.5 text-muted text-sm leading-relaxed">Quick fixes and feature-led decisions have piled up
+                  into a product that no longer feels cohesive.</p>
+              </div>
+            </div>
+
+            <!-- Problem 6 (accent card) -->
+            <div class="card-hover p-6 rounded-card flex flex-col justify-between prob-card"
+              style="background: rgba(127,232,90,0.06); border: 1px solid rgba(127,232,90,0.15); border-radius: 20px;">
+              <p class="prob-text font-display text-lg font-semibold text-paper leading-snug">These aren't visual problems —
+                they're experience problems.</p>
+              <a href="#what-we-do" class="link-arrow mt-5 text-accent text-sm">See how we fix them <span
+                  aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ 4 · DELIVERABLES (light) ============================================================ -->
+      <section class="bg-surface text-ink section-pad">
+        <div class="shell">
+          <div class="max-w-2xl reveal">
+            <p class="eyebrow text-ink/50">Deliverables</p>
+            <h2 class="h-display h-section mt-4">What you get</h2>
+            <p class="mt-5 text-ink/60 max-w-xl" style="line-height:1.7">
+              Every engagement ends with concrete, usable design work — not a slide deck of suggestions. Here's what
+              ships.
+            </p>
+          </div>
+
+          <div class="mt-12 flex flex-wrap gap-3 reveal">
+            <span class="deliverable-tag card-light" style="padding: 0.85rem 1.25rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="3" stroke="#3f9e2e" stroke-width="2" />
+                <path d="M9 9h6M9 13h4" stroke="#3f9e2e" stroke-width="2" stroke-linecap="round" />
+              </svg>
+              UX audit report
+            </span>
+            <span class="deliverable-tag card-light" style="padding: 0.85rem 1.25rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z" stroke="#3f9e2e" stroke-width="2"
+                  stroke-linejoin="round" />
+              </svg>
+              User flow maps
+            </span>
+            <span class="deliverable-tag card-light" style="padding: 0.85rem 1.25rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="3" width="20" height="18" rx="3" stroke="#3f9e2e" stroke-width="2" />
+                <path d="M2 9h20" stroke="#3f9e2e" stroke-width="2" />
+              </svg>
+              Wireframes
+            </span>
+            <span class="deliverable-tag card-light" style="padding: 0.85rem 1.25rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="3" stroke="#3f9e2e" stroke-width="2" />
+                <circle cx="12" cy="12" r="3" stroke="#3f9e2e" stroke-width="2" />
+              </svg>
+              High-fidelity UI screens
+            </span>
+            <span class="deliverable-tag card-light" style="padding: 0.85rem 1.25rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 3l14 9-14 9V3z" stroke="#3f9e2e" stroke-width="2" stroke-linejoin="round" />
+              </svg>
+              Interactive Figma prototypes
+            </span>
+            <span class="deliverable-tag card-light" style="padding: 0.85rem 1.25rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <rect x="5" y="2" width="14" height="20" rx="3" stroke="#3f9e2e" stroke-width="2" />
+                <path d="M10 18h4" stroke="#3f9e2e" stroke-width="2" stroke-linecap="round" />
+              </svg>
+              Responsive design specs
+            </span>
+            <span class="deliverable-tag card-light" style="padding: 0.85rem 1.25rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" stroke="#3f9e2e"
+                  stroke-width="2" />
+                <rect x="8" y="2" width="8" height="4" rx="1" stroke="#3f9e2e" stroke-width="2" />
+              </svg>
+              Developer-ready handoff
+            </span>
+          </div>
+        </div>
+      </section>
+
+        <!-- ============================================================ 5 · OUTCOMES (dark) ============================================================ -->
+      <section class="relative overflow-hidden section-pad">
+        <div class="blob blob-accent w-[400px] h-[400px] -bottom-20 -right-20 opacity-60" aria-hidden="true"></div>
+        <div class="shell relative z-10">
+          <div class="max-w-2xl reveal">
+            <p class="eyebrow text-accent">Outcomes</p>
+            <h2 class="h-display h-section mt-4">What better UX actually looks like</h2>
+            <p class="mt-5 text-muted max-w-xl" style="line-height:1.7">
+              Good UI/UX design isn't just about aesthetics. It directly affects how well your product works for the
+              people using it — and for your business.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <!-- Outcome 1 -->
+            <div class="reveal">
+              <div class="stat-ring" style="background: rgba(127,232,90,0.12); color: #7FE85A;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mt-5 text-paper">Lower drop-off</h3>
+              <p class="mt-2 text-muted text-sm leading-relaxed">Simplified flows mean fewer users abandon the process
+                before completing their goal.</p>
+            </div>
+
+            <!-- Outcome 2 -->
+            <div class="reveal">
+              <div class="stat-ring" style="background: rgba(127,232,90,0.12); color: #7FE85A;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" />
+                  <path d="M22 21v-2a4 4 0 00-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    opacity="0.5" />
+                  <path d="M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    opacity="0.5" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mt-5 text-paper">Better onboarding</h3>
+              <p class="mt-2 text-muted text-sm leading-relaxed">Clearer first-run experiences help new users reach
+                value faster, with fewer questions.</p>
+            </div>
+
+            <!-- Outcome 3 -->
+            <div class="reveal">
+              <div class="stat-ring" style="background: rgba(127,232,90,0.12); color: #7FE85A;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mt-5 text-paper">Reduced support load</h3>
+              <p class="mt-2 text-muted text-sm leading-relaxed">When the interface explains itself, users stop asking
+                how things work.</p>
+            </div>
+
+            <!-- Outcome 4 -->
+            <div class="reveal">
+              <div class="stat-ring" style="background: rgba(127,232,90,0.12); color: #7FE85A;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-semibold mt-5 text-paper">Stronger conversions</h3>
+              <p class="mt-2 text-muted text-sm leading-relaxed">Cleaner interfaces and purposeful layouts guide users
+                toward the actions that matter to your business.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       <!-- ============================================================ 6 · SELECTED WORK (light) — matches homepage scroller ============================================================ -->
+      <section id="work" class="bg-surface text-ink section-pad">
+        <div class="shell">
+          <div class="flex items-end justify-between gap-6 reveal">
+            <div class="max-w-2xl">
+              <p class="eyebrow text-ink/50">Selected work</p>
+              <h2 class="h-display h-section mt-4">UI/UX projects we've delivered</h2>
+            </div>
+            <!-- Scroll controls (desktop) -->
+            <div class="hidden md:flex items-center gap-3 shrink-0 pb-1">
+              <button id="workPrev" type="button" class="work-arrow" aria-label="Previous projects">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button id="workNext" type="button" class="work-arrow" aria-label="Next projects">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Horizontal, snap-scrolling gallery — swipe / drag / arrow keys / buttons -->
+          <div id="workScroller" class="work-scroller mt-12 reveal" role="region" aria-label="Selected work, scrollable"
+            tabindex="0">
+            <div class="flex gap-6 pb-2">
+
+              <!-- Slide 1 · Moneyline -->
+              <article class="work-slide flex-none w-[86%] sm:w-[420px] lg:w-[460px]">
+                <a href="#book" class="work-visual" aria-label="View Moneyline case study">
+                  <div class="work-media">[placeholder — Moneyline visual]</div>
+                  <span class="work-overlay">View case study <span aria-hidden="true">→</span></span>
+                </a>
+                <div class="mt-5">
+                  <div class="flex items-center gap-3 text-sm text-ink/50">
+                    <span>2024</span>
+                    <span class="w-px h-4 bg-ink/15" aria-hidden="true"></span>
+                    <span class="flex gap-2">
+                      <span class="px-3 py-1 rounded-pill border border-ink/12 text-ink/70 text-xs">UI/UX Design</span>
+                      <span class="px-3 py-1 rounded-pill border border-ink/12 text-ink/70 text-xs">Development</span>
+                    </span>
+                  </div>
+                  <h3 class="font-display text-2xl md:text-3xl font-semibold leading-tight mt-4">Moneyline</h3>
+                  <p class="mt-3 text-ink/70 leading-relaxed">A personal finance dashboard. Redesigned onboarding and
+                    the main dashboard to make complex financial data feel simple and actionable.</p>
+                  <div class="work-result mt-6">
+                    <div>
+                      <p class="eyebrow text-ink/45">Result</p>
+                      <p class="mt-1.5 font-medium text-ink">Cut onboarding from <strong class="font-semibold">7 steps
+                          to 3</strong>.</p>
+                    </div>
+                  </div>
+                  <a href="#book" class="link-arrow mt-6 text-ink">View project <span aria-hidden="true">→</span></a>
+                </div>
+              </article>
+
+              <!-- Slide 2 · Career Copilot AI -->
+              <article class="work-slide flex-none w-[86%] sm:w-[420px] lg:w-[460px]">
+                <a href="#book" class="work-visual" aria-label="View Career Copilot AI case study">
+                  <div class="work-media">[placeholder — Career Copilot AI visual]</div>
+                  <span class="work-overlay">View case study <span aria-hidden="true">→</span></span>
+                </a>
+                <div class="mt-5">
+                  <div class="flex items-center gap-3 text-sm text-ink/50">
+                    <span>2025</span>
+                    <span class="w-px h-4 bg-ink/15" aria-hidden="true"></span>
+                    <span class="flex gap-2">
+                      <span class="px-3 py-1 rounded-pill border border-ink/12 text-ink/70 text-xs">Product
+                        Design</span>
+                      <span class="px-3 py-1 rounded-pill border border-ink/12 text-ink/70 text-xs">UI/UX</span>
+                    </span>
+                  </div>
+                  <h3 class="font-display text-2xl md:text-3xl font-semibold leading-tight mt-4">Career Copilot AI</h3>
+                  <p class="mt-3 text-ink/70 leading-relaxed">An AI-powered career-growth platform. Designed the full
+                    product experience across 9 core screens, from skill-gap analysis to interview prep.</p>
+                  <div class="work-result mt-6">
+                    <div>
+                      <p class="eyebrow text-ink/45">Result</p>
+                      <p class="mt-1.5 font-medium text-ink">Turned a complex multi-tool workflow into one clear guided
+                        flow.</p>
+                    </div>
+                  </div>
+                  <a href="#book" class="link-arrow mt-6 text-ink">View project <span aria-hidden="true">→</span></a>
+                </div>
+              </article>
+
+              <!-- Slide 3 · Dari -->
+              <article class="work-slide flex-none w-[86%] sm:w-[420px] lg:w-[460px]">
+                <a href="#book" class="work-visual" aria-label="View Dari case study">
+                  <div class="work-media">[placeholder — Dari visual]</div>
+                  <span class="work-overlay">View case study <span aria-hidden="true">→</span></span>
+                </a>
+                <div class="mt-5">
+                  <div class="flex items-center gap-3 text-sm text-ink/50">
+                    <span>2025</span>
+                    <span class="w-px h-4 bg-ink/15" aria-hidden="true"></span>
+                    <span class="flex gap-2">
+                      <span class="px-3 py-1 rounded-pill border border-ink/12 text-ink/70 text-xs">Product
+                        Design</span>
+                      <span class="px-3 py-1 rounded-pill border border-ink/12 text-ink/70 text-xs">UI/UX</span>
+                    </span>
+                  </div>
+                  <h3 class="font-display text-2xl md:text-3xl font-semibold leading-tight mt-4">Dari</h3>
+                  <p class="mt-3 text-ink/70 leading-relaxed">A property-search platform for the UAE market. Designed a
+                    fast, filter-first browsing experience.</p>
+                  <div class="work-result mt-6">
+                    <div>
+                      <p class="eyebrow text-ink/45">Result</p>
+                      <p class="mt-1.5 font-medium text-ink">Faster search, clearer listings.</p>
+                    </div>
+                  </div>
+                  <a href="#book" class="link-arrow mt-6 text-ink">View project <span aria-hidden="true">→</span></a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-12 reveal">
+            <a href="#book" class="btn btn-ghost-light">View all projects <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ 7 · PROCESS (dark) ============================================================ -->
+      <section class="relative overflow-hidden section-pad">
+        <div class="blob blob-accent w-[360px] h-[360px] bottom-0 -left-24 opacity-70" aria-hidden="true"></div>
+        <div class="shell relative z-10">
+          <div class="max-w-2xl reveal">
+            <p class="eyebrow text-accent">How we work</p>
+            <h2 class="h-display h-section mt-4">From audit to handoff, in four steps</h2>
+          </div>
+
+          <div class="mt-14 grid gap-10 md:grid-cols-4 relative step-line">
+            <div class="reveal">
+              <div class="font-display text-3xl font-semibold text-accent mb-4">01</div>
+              <h3 class="font-display text-xl font-semibold">Discover</h3>
+              <p class="mt-2 text-muted leading-relaxed">We learn your product, map the user journeys, and identify
+                where the experience breaks down.</p>
+            </div>
+            <div class="reveal">
+              <div class="font-display text-3xl font-semibold text-accent mb-4">02</div>
+              <h3 class="font-display text-xl font-semibold">Design</h3>
+              <p class="mt-2 text-muted leading-relaxed">We redesign the key flows and interfaces in Figma — iterating
+                with you in the open at every stage.</p>
+            </div>
+            <div class="reveal">
+              <div class="font-display text-3xl font-semibold text-accent mb-4">03</div>
+              <h3 class="font-display text-xl font-semibold">Build &amp; Handoff</h3>
+              <p class="mt-2 text-muted leading-relaxed">We deliver production-ready design files with specs, assets,
+                and component documentation your developers can use immediately.</p>
+            </div>
+            <div class="reveal">
+              <div class="font-display text-3xl font-semibold text-accent mb-4">04</div>
+              <h3 class="font-display text-xl font-semibold">Optimize</h3>
+              <p class="mt-2 text-muted leading-relaxed">After launch, we review real user behavior and refine the
+                design based on what the data shows.</p>
+            </div>
+          </div>
+
+          <div class="mt-12 reveal">
+            <a href="#book" class="btn btn-primary">Book a Free Call</a>
+          </div>
+        </div>
+      </section>
+
+       <!-- ============================================================ 8 · WHY US (light) ============================================================ -->
+    <section id="why" class="bg-surface text-ink section-pad">
+      <div class="shell">
+        <div class="max-w-2xl reveal">
+          <p class="eyebrow text-ink/50">Why us</p>
+          <h2 class="h-display h-major mt-4">Why teams choose us</h2>
+          <p class="mt-5 text-ink/60">Here's why product teams choose us to design and build with.</p>
+        </div>
+
+        <!-- Staggered "constellation" of bubble-topped cards on a faint grid.
+                 Tilt straightens + lifts on hover; accent and dark cards alternate. -->
+        <div class="why-cluster mt-16 max-w-4xl mx-auto reveal">
+          <div class="why-bg-lines" aria-hidden="true"></div>
+
+          <div class="relative grid grid-cols-1 md:grid-cols-2 gap-x-10 md:gap-x-16 gap-y-16 md:gap-y-14">
+
+            <!-- Card 1 · accent -->
+            <article class="why-card md:-rotate-2">
+              <span class="why-blob accent" aria-hidden="true"></span>
+              <div class="why-panel accent">
+                <span class="why-ico accent" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"
+                    fill="none">
+                    <path d="M4 7l8-4 8 4-8 4-8-4zm0 5l8 4 8-4M4 17l8 4 8-4" stroke="currentColor" stroke-width="1.7"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg></span>
+                <h3 class="font-display text-2xl font-semibold">Design + build under one roof</h3>
+                <p class="mt-2 text-ink/60 leading-relaxed">Figma to production-ready Angular, no handoff gaps.</p>
+              </div>
+            </article>
+
+            <!-- Card 2 · dark -->
+            <article class="why-card md:rotate-2 md:mt-16">
+              <span class="why-blob dark" aria-hidden="true"></span>
+              <div class="why-panel dark">
+                <span class="why-ico dark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"
+                    fill="none">
+                    <path d="M3 12l4 4 5-6 4 3 5-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg></span>
+                <h3 class="font-display text-2xl font-semibold">Conversion-focused</h3>
+                <p class="mt-2 text-ink/60 leading-relaxed">We design for outcomes, not just aesthetics.</p>
+              </div>
+            </article>
+
+            <!-- Card 3 · accent -->
+            <article class="why-card md:-rotate-2">
+              <span class="why-blob accent" aria-hidden="true"></span>
+              <div class="why-panel accent">
+                <span class="why-ico accent" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"
+                    fill="none">
+                    <path d="M12 12a4 4 0 100-8 4 4 0 000 8zm-7 8a7 7 0 0114 0" stroke="currentColor" stroke-width="1.7"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg></span>
+                <h3 class="font-display text-2xl font-semibold">Senior-led</h3>
+                <p class="mt-2 text-ink/60 leading-relaxed">You work directly with the designer doing the work, not an
+                  account manager.</p>
+              </div>
+            </article>
+
+            <!-- Card 4 · dark -->
+            <article class="why-card md:rotate-2 md:mt-16">
+              <span class="why-blob dark" aria-hidden="true"></span>
+              <div class="why-panel dark">
+                <span class="why-ico dark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24"
+                    fill="none">
+                    <path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke="currentColor" stroke-width="1.7"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg></span>
+                <h3 class="font-display text-2xl font-semibold">Fast, structured delivery</h3>
+                <p class="mt-2 text-ink/60 leading-relaxed">A clear process and predictable timelines.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <!-- ============================================================ 9 · RELATED SERVICES (dark) ============================================================ -->
+      <section class="section-pad">
+        <div class="shell">
+          <div class="max-w-2xl reveal">
+            <p class="eyebrow text-accent">Related services</p>
+            <h2 class="h-display h-section mt-4">Often paired with UI/UX design</h2>
+          </div>
+
+          <div class="mt-12 grid gap-5 sm:grid-cols-3">
+            <a href="#" class="card-dark card-hover p-7 block no-underline related-card">
+              <h3 class="rel-title font-display text-xl font-semibold text-paper">Product Design</h3>
+              <p class="rel-desc mt-3 text-muted leading-relaxed text-sm">Building a new product from scratch? We design
+                end-to-end, from concept to launch-ready screens.</p>
+              <span class="rel-arrow link-arrow mt-5 text-accent text-sm">Learn more <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a href="#" class="card-dark card-hover p-7 block no-underline related-card">
+              <h3 class="rel-title font-display text-xl font-semibold text-paper">Design Systems</h3>
+              <p class="rel-desc mt-3 text-muted leading-relaxed text-sm">Scale your UI consistently with reusable components,
+                patterns, and a shared design language.</p>
+              <span class="rel-arrow link-arrow mt-5 text-accent text-sm">Learn more <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a href="#" class="card-dark card-hover p-7 block no-underline related-card">
+              <h3 class="rel-title font-display text-xl font-semibold text-paper">Product Optimization</h3>
+              <p class="rel-desc mt-3 text-muted leading-relaxed text-sm">Already live? We find and fix the areas quietly losing
+                you users, signups, and revenue.</p>
+              <span class="rel-arrow link-arrow mt-5 text-accent text-sm">Learn more <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+        <!-- ============================================================ 10 · FAQ (light) ============================================================ -->
+      <section class="bg-surface text-ink section-pad">
+        <div class="shell">
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            <!-- Left: heading -->
+            <div class="reveal">
+              <p class="eyebrow text-ink/50">FAQ</p>
+              <h2 class="h-display h-section mt-4">Common questions about UI/UX&nbsp;design</h2>
+              <p class="mt-5 text-ink/60 max-w-md" style="line-height:1.7">
+                Answers to the questions we hear most from product teams considering a UI/UX engagement.
+              </p>
+              <a href="#book" class="btn btn-ghost-light mt-8">Have a different question? Let's talk <span
+                  aria-hidden="true">→</span></a>
+            </div>
+
+            <!-- Right: accordion -->
+            <div class="reveal">
+              <!-- Q1 -->
+              <details class="faq-item">
+                <summary class="faq-btn">
+                  <span>How is UI/UX design different from product design?</span>
+                  <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="7" y1="2" x2="7" y2="12" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="2" y1="7" x2="12" y2="7" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                    </svg></span>
+                </summary>
+                <div class="faq-answer">
+                  <p class="text-ink/65 leading-relaxed">UI/UX design focuses on improving existing interfaces — making
+                    them clearer, easier to use, and more effective. Product design is broader: it covers designing a
+                    new product from early concepts through launch-ready screens. If your product already exists but
+                    users are struggling with it, UI/UX design is the right starting point.</p>
+                </div>
+              </details>
+
+              <!-- Q2 -->
+              <details class="faq-item">
+                <summary class="faq-btn">
+                  <span>What does a typical UI/UX project look like?</span>
+                  <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="7" y1="2" x2="7" y2="12" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="2" y1="7" x2="12" y2="7" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                    </svg></span>
+                </summary>
+                <div class="faq-answer">
+                  <p class="text-ink/65 leading-relaxed">Most projects start with a UX audit — we review your product,
+                    map the user journeys, and identify the biggest friction points. From there, we redesign the key
+                    screens and flows in Figma, iterating with your team. We deliver high-fidelity designs, interactive
+                    prototypes, and a developer-ready handoff package.</p>
+                </div>
+              </details>
+
+              <!-- Q3 -->
+              <details class="faq-item">
+                <summary class="faq-btn">
+                  <span>How long does a UI/UX redesign usually take?</span>
+                  <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="7" y1="2" x2="7" y2="12" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="2" y1="7" x2="12" y2="7" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                    </svg></span>
+                </summary>
+                <div class="faq-answer">
+                  <p class="text-ink/65 leading-relaxed">It depends on scope. A focused redesign of a few key screens or
+                    flows can take 2–4 weeks. A more comprehensive redesign — covering onboarding, core workflows, and a
+                    dashboard — typically runs 6–10 weeks. We'll scope the timeline together during our initial call
+                    based on your specific situation.</p>
+                </div>
+              </details>
+
+              <!-- Q4 -->
+              <details class="faq-item">
+                <summary class="faq-btn">
+                  <span>Do you handle frontend development too?</span>
+                  <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="7" y1="2" x2="7" y2="12" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="2" y1="7" x2="12" y2="7" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                    </svg></span>
+                </summary>
+                <div class="faq-answer">
+                  <p class="text-ink/65 leading-relaxed">Yes. We design in Figma and build in Angular, so the same team
+                    can take a project from design through to working frontend code. This reduces handoff problems and
+                    means the final product matches the design more closely. If your stack uses a different framework,
+                    we deliver detailed design specs and a structured handoff instead.</p>
+                </div>
+              </details>
+
+              <!-- Q5 -->
+              <details class="faq-item">
+                <summary class="faq-btn">
+                  <span>What if I only need a UX audit, not a full redesign?</span>
+                  <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="7" y1="2" x2="7" y2="12" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="2" y1="7" x2="12" y2="7" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                    </svg></span>
+                </summary>
+                <div class="faq-answer">
+                  <p class="text-ink/65 leading-relaxed">That's a perfectly good starting point. A UX audit gives you a
+                    clear picture of what's working and what isn't, with prioritized recommendations your team can act
+                    on. Many clients start with an audit and then decide which parts to redesign based on the findings.
+                  </p>
+                </div>
+              </details>
+
+              <!-- Q6 -->
+              <details class="faq-item" style="border-bottom: none;">
+                <summary class="faq-btn">
+                  <span>How do you work with our existing development team?</span>
+                  <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <line x1="7" y1="2" x2="7" y2="12" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                      <line x1="2" y1="7" x2="12" y2="7" stroke="#111112" stroke-width="1.5" stroke-linecap="round" />
+                    </svg></span>
+                </summary>
+                <div class="faq-answer">
+                  <p class="text-ink/65 leading-relaxed">We design with implementation in mind from day one. During the
+                    project, we share progress through Figma so your developers can follow along. At handoff, we provide
+                    organized Figma files with component specs, spacing, states, and responsive breakpoints — everything
+                    your engineering team needs to build accurately without guessing.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       <!-- ============================================================ 11 · FINAL CTA (full dark) — compact horizontal band: headline left, action right, one row. ============================================================ -->
+    <section id="book" class="relative overflow-hidden py-20 md:py-24">
+      <!-- contained accent glow (kept subtle so the band doesn't read as empty) -->
+      <div class="blob blob-accent w-[520px] h-[340px] top-1/2 left-[28%] -translate-x-1/2 -translate-y-1/2 opacity-70"
+        aria-hidden="true"></div>
+      <div class="shell relative z-10">
+        <div class="grid lg:grid-cols-[1.6fr_auto] gap-10 lg:gap-16 items-center">
+          <!-- Headline -->
+          <div class="reveal">
+            <p class="eyebrow text-accent">Ready when you are</p>
+            <h2 class="h-display h-major mt-4">Let's make your product easier to use — and easier to <span
+                class="accent-word">grow</span>.</h2>
+          </div>
+          <!-- Action -->
+          <div class="reveal flex flex-col items-start lg:items-end gap-4 shrink-0">
+            <a href="mailto:hello@uiuxdesigningservices.com" class="btn btn-primary text-base">Book a Free Call</a>
+            <p class="text-sm text-muted lg:text-right max-w-[15rem]">Free 30-minute call — no pressure. We usually
+              reply within one business day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <!-- ============================================================ 12 TESTIMONIALS (light) ============================================================ -->
+      <section class="bg-surface text-ink section-pad pb-60">
+        <div class="shell">
+          <div class="max-w-2xl reveal">
+            <p class="eyebrow text-ink/50">Client feedback</p>
+            <h2 class="h-display h-section mt-4">What teams say after working with&nbsp;us</h2>
+          </div>
+
+          <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+            <!-- Testimonial 1 -->
+            <blockquote class="card-light card-hover p-7 flex flex-col justify-between relative overflow-hidden testi-card">
+              <div>
+                <div class="t-stars flex gap-1 mb-5" aria-label="5 stars">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="t-quote text-ink/70 leading-relaxed italic">"[Client testimonial about the UI/UX design engagement — what changed, how the team worked, and what the impact was.]"</p>
+              </div>
+              <div class="mt-6 pt-5">
+                <div class="t-divider border-t border-ink/8"></div>
+                <div class="t-author pt-5">
+                  <p class="font-display font-semibold text-ink">[Client Name]</p>
+                  <p class="text-ink/50 text-sm mt-0.5">[Role], [Company]</p>
+                </div>
+              </div>
+            </blockquote>
+
+            <!-- Testimonial 2 -->
+            <blockquote class="card-light card-hover p-7 flex flex-col justify-between relative overflow-hidden testi-card">
+              <div>
+                <div class="t-stars flex gap-1 mb-5" aria-label="5 stars">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="t-quote text-ink/70 leading-relaxed italic">"[Client testimonial about how the redesign improved usability, reduced support tickets, or increased conversions.]"</p>
+              </div>
+              <div class="mt-6 pt-5">
+                <div class="t-divider border-t border-ink/8"></div>
+                <div class="t-author pt-5">
+                  <p class="font-display font-semibold text-ink">[Client Name]</p>
+                  <p class="text-ink/50 text-sm mt-0.5">[Role], [Company]</p>
+                </div>
+              </div>
+            </blockquote>
+
+            <!-- Testimonial 3 -->
+            <blockquote class="card-light card-hover p-7 flex flex-col justify-between relative overflow-hidden testi-card">
+              <div>
+                <div class="t-stars flex gap-1 mb-5" aria-label="5 stars">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#7FE85A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="t-quote text-ink/70 leading-relaxed italic">"[Client testimonial about the collaboration experience — communication, process, and delivery quality.]"</p>
+              </div>
+              <div class="mt-6 pt-5">
+                <div class="t-divider border-t border-ink/8"></div>
+                <div class="t-author pt-5">
+                  <p class="font-display font-semibold text-ink">[Client Name]</p>
+                  <p class="text-ink/50 text-sm mt-0.5">[Role], [Company]</p>
+                </div>
+              </div>
+            </blockquote>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ FOOTER ============================================================ -->
+      <footer
+        class="relative z-10 -mt-10 md:-mt-14 rounded-t-[32px] md:rounded-t-[48px] bg-canvas text-paper pt-16 md:pt-20 pb-10">
+        <div class="shell">
+          <div class="flex flex-col-reverse md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              <a href="mailto:hello@uiuxdesigningservices.com"
+                class="group h-display text-4xl md:text-6xl font-semibold inline-flex items-center gap-3 text-paper hover:text-accent transition-colors">
+                Let's talk
+                <span aria-hidden="true"
+                  class="inline-block transition-transform duration-200 group-hover:translate-x-1.5">→</span>
+              </a>
+              <p class="mt-3 text-muted">hello@uiuxdesigningservices.com</p>
+            </div>
+            <span
+              class="self-start md:self-auto inline-flex items-center gap-2 rounded-pill bg-accent text-canvas text-sm font-semibold px-4 py-2">
+              <span class="w-2 h-2 rounded-full bg-canvas/80" aria-hidden="true"></span>
+              Available for new projects
+            </span>
+          </div>
+
+          <div class="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-sm">
+            <nav aria-label="Services">
+              <p class="eyebrow text-muted mb-4">Services</p>
+              <ul class="space-y-2.5 text-paper/80">
+                <li><a href="#" class="hover:text-accent transition-colors">UI/UX Design</a></li>
+                <li><a href="#" class="hover:text-accent transition-colors">Product Design</a></li>
+                <li><a href="#" class="hover:text-accent transition-colors">Design Systems</a></li>
+                <li><a href="#" class="hover:text-accent transition-colors">Frontend Development</a></li>
+                <li><a href="#" class="hover:text-accent transition-colors">Product Optimization</a></li>
+              </ul>
+            </nav>
+            <nav aria-label="Company">
+              <p class="eyebrow text-muted mb-4">Company</p>
+              <ul class="space-y-2.5 text-paper/80">
+                <li><a href="#" class="hover:text-accent transition-colors">Work</a></li>
+                <li><a href="#" class="hover:text-accent transition-colors">About</a></li>
+                <li><a href="#" class="hover:text-accent transition-colors">Insights</a></li>
+                <li><a href="#book" class="hover:text-accent transition-colors">Contact</a></li>
+              </ul>
+            </nav>
+            <div>
+              <p class="eyebrow text-muted mb-4">Social</p>
+              <div class="flex gap-3">
+                <a href="#" aria-label="LinkedIn"
+                  class="w-10 h-10 rounded-pill border border-paper/15 text-paper flex items-center justify-center hover:bg-paper hover:text-canvas hover:border-paper transition-colors">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 005 0 2.5 2.5 0 00-2.52-2.5zM3 8.98h4v12H3v-12zM9.5 8.98h3.8v1.64h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v6.31h-4v-5.6c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.14 1.45-2.14 2.95v5.7h-4v-12z" />
+                  </svg>
+                </a>
+                <a href="#" aria-label="X"
+                  class="w-10 h-10 rounded-pill border border-paper/15 text-paper flex items-center justify-center hover:bg-paper hover:text-canvas hover:border-paper transition-colors">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M18.9 2H22l-7.5 8.6L23 22h-6.9l-5.4-7-6.2 7H1.4l8-9.2L1 2h7l4.9 6.5L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z" />
+                  </svg>
+                </a>
+                <a href="#" aria-label="Dribbble"
+                  class="w-10 h-10 rounded-pill border border-paper/15 text-paper flex items-center justify-center hover:bg-paper hover:text-canvas hover:border-paper transition-colors">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
+                    <path d="M5 8c4 1 9 2 13 6M9 3.5c3 4 5 9 5.5 16M20 9c-5 0-10 1-14 4" stroke="currentColor"
+                      stroke-width="1.6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div>
+              <p class="eyebrow text-muted mb-4">Insights</p>
+              <p class="text-paper/60 leading-relaxed">Notes on product design, clarity and conversion. <span
+                  class="text-muted">[coming soon]</span></p>
+            </div>
+          </div>
+
+          <div
+            class="mt-16 pt-8 border-t border-paper/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-muted">
+            <p>&copy; 2026 UIUX Designing Services. All rights reserved.</p>
+            <p>uiuxdesigningservices.com</p>
+          </div>
+        </div>
+      </footer>
+
+    <!-- ============================================================ SCRIPTS ============================================================ -->
+    <script src="../script.js" defer></script>
+
+</body>
+
+</html>
