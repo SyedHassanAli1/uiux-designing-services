@@ -318,55 +318,73 @@
       </div>
     </section>
 
-    <!-- ============================================================ 4 · SERVICES (light) ============================================================ -->
-    <section id="services" class="bg-surface text-ink section-pad">
+    <!-- ============================================================ 4 · SERVICES (light) — 6 service cards (2-col tablet/desktop, swipe carousel on mobile) + full-width dark closing card. [Links marked #book point to booking until each service page exists] ============================================================ -->
+    <section id="services" class="bg-surface text-ink section-pad" aria-labelledby="services-title">
       <div class="shell">
-        <div class="max-w-2xl reveal">
-          <p class="eyebrow text-ink/50">Services</p>
-          <h2 class="h-display h-major mt-4">Services built around your product's goals</h2>
+        <div class="svc-head reveal">
+          <div>
+            <p class="eyebrow text-ink/50">Services</p>
+            <h2 id="services-title" class="h-display h-major mt-4">UI UX design services for teams who need results, not just screens</h2>
+          </div>
+          <p class="svc-intro">A UI UX design agency studies how people use your product, designs the interface around
+            what it finds, and hands developers something they can build without guessing. Our services cover that
+            whole path. Start with the one that matches your problem today and add the others when you need them.</p>
         </div>
 
-        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Card 1 -->
-          <article class="card-light card-hover p-7 reveal">
+        <div class="svc-grid" id="svcGrid">
+          <article class="svc-card card-light card-hover reveal">
             <h3 class="font-display text-2xl font-semibold">UI/UX Design</h3>
-            <p class="mt-3 text-ink/70 leading-relaxed">Interfaces that feel effortless, designed around how your users
-              actually think.</p>
-            <a href="#book" class="link-arrow mt-6 text-ink">Explore <span aria-hidden="true">→</span></a>
+            <p class="svc-hook">Interfaces that explain themselves.</p>
+            <p class="svc-desc">We design the screens and the flows between them: onboarding, dashboards, checkout, settings, and the quiet corners where users usually give up. Every choice traces back to research, so you can explain why a button sits where it does. You receive a clickable prototype, a design system in Figma, and specs your developers will not need to chase.</p>
+            <a href="services/ui_ux_design_service.html" class="link-arrow svc-link text-ink">See UI/UX design <span aria-hidden="true">→</span></a>
           </article>
-          <!-- Card 2 -->
-          <article class="card-light card-hover p-7 reveal">
-            <h3 class="font-display text-2xl font-semibold">Product Design</h3>
-            <p class="mt-3 text-ink/70 leading-relaxed">End-to-end design for new products, from first idea to
-              launch-ready screens.</p>
-            <a href="#book" class="link-arrow mt-6 text-ink">Explore <span aria-hidden="true">→</span></a>
+          <article class="svc-card card-light card-hover reveal">
+            <h3 class="font-display text-2xl font-semibold">UX Consulting</h3>
+            <p class="svc-hook">A senior UX voice in your corner.</p>
+            <p class="svc-desc">Some teams have designers but need direction. We join for a sprint or a quarter to set priorities, settle design debates with evidence, build research habits, and review work before it ships. We sit in your planning sessions and tell you plainly what we would change first.</p>
+            <a href="#book" class="link-arrow svc-link text-ink">Talk to a UX consultant <span aria-hidden="true">→</span></a>
           </article>
-          <!-- Card 3 -->
-          <article class="card-light card-hover p-7 reveal">
-            <h3 class="font-display text-2xl font-semibold">Design Systems</h3>
-            <p class="mt-3 text-ink/70 leading-relaxed">A consistent, scalable system your team can build on without
-              guesswork.</p>
-            <a href="#book" class="link-arrow mt-6 text-ink">Explore <span aria-hidden="true">→</span></a>
+          <article class="svc-card card-light card-hover reveal">
+            <h3 class="font-display text-2xl font-semibold">Frontend Development <span class="svc-title-sub">(Angular, React and More)</span></h3>
+            <p class="svc-hook">Design that survives contact with code.</p>
+            <p class="svc-desc">Many agencies hand over a design file and wish you luck. We build the interface ourselves, in Angular or React, or in the framework your project calls for. Components are reusable, markup is accessible, and layouts are responsive and match the design system exactly, with Sass keeping the styles organized and easy to maintain. Your users get what was designed, and your developers inherit clean, documented components instead of a cleanup job.</p>
+            <a href="#book" class="link-arrow svc-link text-ink">Explore frontend development <span aria-hidden="true">→</span></a>
           </article>
-          <!-- Card 4 -->
-          <article class="card-light card-hover p-7 reveal">
-            <h3 class="font-display text-2xl font-semibold">Frontend Development</h3>
-            <p class="mt-3 text-ink/70 leading-relaxed">Pixel-perfect, production-ready Angular builds — straight from
-              Figma, no handoff gaps.</p>
-            <a href="#book" class="link-arrow mt-6 text-ink">Explore <span aria-hidden="true">→</span></a>
+          <article class="svc-card card-light card-hover reveal">
+            <h3 class="font-display text-2xl font-semibold">UX Audit</h3>
+            <p class="svc-hook">Find what is costing you users before you pay for a redesign.</p>
+            <p class="svc-desc">We review your live website or product against usability principles, accessibility standards, analytics and real user behavior. You get a ranked list of problems, each with a fix, the effort involved and the likely impact. The accessibility review covers WCAG 2.2 and the rules that apply where you operate: the ADA in the US, the Equality Act in the UK, the DDA in Australia and AODA in Ontario and the European Accessibility Act across the EU, including Italy. Often a handful of targeted fixes does more than a full redesign.</p>
+            <p class="sr-only">You receive:</p>
+            <ul class="svc-tags" aria-label="You receive">
+              <li>Prioritized report</li>
+              <li>Annotated screens</li>
+              <li>Walkthrough call</li>
+            </ul>
+            <a href="#book" class="link-arrow svc-link text-ink">Get a UX audit <span aria-hidden="true">→</span></a>
           </article>
-          <!-- Card 5 -->
-          <article class="card-light card-hover p-7 reveal">
-            <h3 class="font-display text-2xl font-semibold">Product Optimization</h3>
-            <p class="mt-3 text-ink/70 leading-relaxed">Find and fix what's quietly costing you users, signups and
-              revenue.</p>
-            <a href="#book" class="link-arrow mt-6 text-ink">Explore <span aria-hidden="true">→</span></a>
+          <article class="svc-card card-light card-hover reveal">
+            <h3 class="font-display text-2xl font-semibold">Website Design</h3>
+            <p class="svc-hook">Websites that earn the click and the lead.</p>
+            <p class="svc-desc">Whether it is a marketing site, a SaaS homepage or an online store, we design for clarity first: what you do, who it is for and what to do next, all visible on the first screen. We plan page structure with search in mind, design for mobile first, and watch page speed so a beautiful site never costs you rankings.</p>
+            <a href="#book" class="link-arrow svc-link text-ink">See website design <span aria-hidden="true">→</span></a>
           </article>
-          <!-- Accent CTA tile to balance the 5-card grid -->
-          <article class="card-hover p-7 rounded-card bg-canvas text-paper flex flex-col justify-between reveal">
-            <p class="font-display text-2xl font-semibold leading-tight">Not sure which one you need?</p>
-            <a href="#is-this-you" class="link-arrow mt-6 text-accent">Start here <span aria-hidden="true">→</span></a>
+          <article class="svc-card card-light card-hover reveal">
+            <h3 class="font-display text-2xl font-semibold">Mobile App Design</h3>
+            <p class="svc-hook">Apps that feel at home on iOS and Android.</p>
+            <p class="svc-desc">People use apps with one thumb, on small screens, on patchy connections, while distracted. We design for that reality. Our mobile app design covers user flows, interface design, motion and interaction details, and the platform conventions of iOS and Android, so your app feels native on each. We hand over developer ready files, annotated for your engineering team.</p>
+            <a href="#book" class="link-arrow svc-link text-ink">See mobile app design <span aria-hidden="true">→</span></a>
           </article>
+        </div>
+
+        <!-- Mobile carousel counter (shown < 640px only) -->
+        <p class="svc-count" aria-hidden="true"><span id="svcCurrent">1</span> / 6</p>
+
+        <!-- Closing card -->
+        <div class="svc-cta rounded-card bg-canvas text-paper reveal">
+          <p class="font-display text-2xl md:text-[1.75rem] font-semibold leading-tight">Not sure which service fits?
+            <span class="block mt-2 font-sans text-base font-normal text-muted">Tell us what is not working and we will
+              point you to the shortest route.</span></p>
+          <a href="#book" class="btn btn-primary justify-center shrink-0">Book a Discovery Call</a>
         </div>
       </div>
     </section>

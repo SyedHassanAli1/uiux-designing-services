@@ -474,3 +474,24 @@
         btn.textContent = open ? 'Read more' : 'Show less';
       });
     })();
+
+    /* --- Services: mobile swipe counter ("1 / 6") --- */
+    (function () {
+      var grid = document.getElementById('svcGrid');
+      var cur = document.getElementById('svcCurrent');
+      if (!grid || !cur) return;
+      var cards = grid.querySelectorAll('.svc-card');
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var gl = grid.getBoundingClientRect().left, best = 0, bestD = Infinity;
+        cards.forEach(function (c, i) {
+          var d = Math.abs(c.getBoundingClientRect().left - gl - 24);
+          if (d < bestD) { bestD = d; best = i; }
+        });
+        cur.textContent = String(best + 1);
+      }
+      grid.addEventListener('scroll', function () {
+        if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+      }, {passive: true});
+    })();

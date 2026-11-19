@@ -1850,3 +1850,150 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-point { transition: none; }
 }
+
+/* ============================================================
+   SERVICES — 6 cards (homepage)
+   Tablet + desktop 2 cols (3 cols left large empty gaps with the long copy)
+   Mobile: horizontal swipe (scroll-snap), equal-height cards
+   ============================================================ */
+.svc-head {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .svc-head {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 4rem;
+    align-items: end;
+  }
+}
+
+.svc-intro {
+  max-width: 34rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(17, 17, 18, 0.62);
+}
+
+.svc-grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.svc-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+}
+
+.svc-title-sub {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(17, 17, 18, 0.5);
+}
+
+.svc-hook {
+  margin-top: 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #111112;
+}
+
+.svc-desc {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(17, 17, 18, 0.66);
+}
+
+.svc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.svc-tags li {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #111112;
+  background: rgba(127, 232, 90, 0.18);
+  border-radius: 999px;
+}
+
+/* Link pinned to the bottom so links line up across a row */
+.svc-link {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.svc-card:hover {
+  border-color: rgba(17, 17, 18, 0.18);
+}
+
+/* Closing card */
+.svc-cta {
+  margin-top: 1.25rem;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .svc-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+.svc-count { display: none; }
+
+/* Mobile: horizontal swipe carousel */
+@media (max-width: 639px) {
+  .svc-grid {
+    display: flex;
+    gap: 0.875rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.5rem;
+    margin-inline: -1.5rem;            /* bleed to screen edges */
+    padding: 0.25rem 1.5rem 0.5rem;    /* room for hover lift + edge gutter */
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .svc-grid::-webkit-scrollbar { display: none; }
+
+  .svc-card {
+    flex: 0 0 88%;
+    scroll-snap-align: start;
+  }
+
+  .svc-card.card-hover:hover { transform: none; }
+
+  .svc-count {
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(17, 17, 18, 0.5);
+  }
+}
