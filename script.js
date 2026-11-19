@@ -497,15 +497,42 @@
     })();
 
     /* --- Services: clamp descriptions + "Read more" detail panel ---
-       Full text stays in each card (SEO). Without JS, cards show full text. */
+       Full text stays in each card (SEO). Without JS, cards show full text.
+       While open, the page is frozen in place (body position:fixed at the
+       current offset) so nothing — focus, the sheet animation, mobile browser
+       quirks — can scroll it; on close it is released at the exact same spot. */
     (function () {
       var grid = document.getElementById('svcGrid');
       var panel = document.getElementById('svcPanel');
       if (!grid || !panel || typeof panel.showModal !== 'function') return;
 
       var $ = function (sel) { return panel.querySelector(sel); };
+      var root = document.documentElement;
+      var bs = document.body.style;
       var opener = null;
       var savedY = 0;
+      var locked = false;
+
+      function lockScroll() {
+        if (locked) return;
+        savedY = window.scrollY || root.scrollTop || 0;
+        root.style.scrollBehavior = 'auto';
+        root.classList.add('svc-panel-open');
+        bs.position = 'fixed';
+        bs.top = (-savedY) + 'px';
+        bs.left = '0';
+        bs.right = '0';
+        locked = true;
+      }
+
+      function unlockScroll() {
+        if (!locked) return;
+        locked = false;
+        bs.position = bs.top = bs.left = bs.right = '';
+        root.classList.remove('svc-panel-open');
+        window.scrollTo(0, savedY);
+        requestAnimationFrame(function () { root.style.scrollBehavior = ''; });
+      }
 
       grid.classList.add('is-enhanced');
       grid.querySelectorAll('.svc-more').forEach(function (btn) {
@@ -532,11 +559,10 @@
           pl.href = link.getAttribute('href');
           pl.innerHTML = link.innerHTML;
           opener = btn;
-          savedY = window.scrollY;
-          document.documentElement.classList.add('svc-panel-open');
+          lockScroll();
           panel.showModal();
           $('.svc-panel-body').scrollTop = 0;
-          $('.svc-panel-close').focus();
+          $('.svc-panel-close').focus({ preventScroll: true });
         });
       });
 
@@ -548,20 +574,30 @@
         setTimeout(function () { panel.classList.remove('is-closing'); panel.close(); }, 220);
       }
 
-      /* Keep the page exactly where it was: native focus restore + the html
-         overflow toggle (with smooth scroll on html) can otherwise move it. */
-      function restoreScroll() { window.scrollTo({ top: savedY, left: 0, behavior: 'instant' }); }
       panel.addEventListener('close', function () {
-        document.documentElement.classList.remove('svc-panel-open');
-        if (opener) { opener.focus({ preventScroll: true }); restoreScroll(); requestAnimationFrame(restoreScroll); }
+        unlockScroll();
+        if (opener) opener.focus({ preventScroll: true });
       });
       panel.addEventListener('cancel', function (e) { e.preventDefault(); close(); }); /* Esc */
       $('.svc-panel-close').addEventListener('click', close);
       panel.addEventListener('click', function (e) { if (e.target === panel) close(); }); /* backdrop */
+
+      /* Panel CTAs: release the page first, then go where the link points */
       panel.querySelectorAll('[data-close]').forEach(function (a) {
-        a.addEventListener('click', function () {
-          panel.close();               /* close instantly so the anchor scroll isn't blocked */
+        a.addEventListener('click', function (e) {
+          var href = a.getAttribute('href') || '';
           opener = null;
+          panel.close();
+          unlockScroll();
+          if (href.charAt(0) === '#') {
+            var target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (history.pushState) history.pushState(null, '', href);
+            }
+          }
+          /* other links (service pages) navigate normally */
         });
       });
     })();
