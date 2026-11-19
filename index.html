@@ -397,19 +397,26 @@
       <!-- Service detail panel: populated from the clicked card. Side panel on desktop, bottom sheet on mobile. -->
       <dialog id="svcPanel" class="svc-panel" aria-labelledby="svcPanelTitle">
         <div class="svc-panel-inner">
-          <div class="svc-panel-top">
-            <p class="eyebrow text-accent">Service</p>
-            <button type="button" class="svc-panel-close" aria-label="Close">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </button>
+          <!-- Fixed header -->
+          <div class="svc-panel-head">
+            <div class="svc-panel-top">
+              <p class="eyebrow text-accent">Service</p>
+              <button type="button" class="svc-panel-close" aria-label="Close">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <h3 id="svcPanelTitle" class="svc-panel-title font-display"></h3>
           </div>
-          <h3 id="svcPanelTitle" class="svc-panel-title font-display"></h3>
-          <p class="svc-panel-hook"></p>
-          <p class="svc-panel-desc"></p>
-          <div class="svc-panel-tags"></div>
+          <!-- Scrollable content -->
+          <div class="svc-panel-body">
+            <p class="svc-panel-hook"></p>
+            <p class="svc-panel-desc"></p>
+            <div class="svc-panel-tags"></div>
+          </div>
+          <!-- Fixed footer -->
           <div class="svc-panel-actions">
             <a href="#book" class="btn btn-primary justify-center" data-close>Book a Discovery Call</a>
-            <a href="#book" class="link-arrow svc-panel-link text-paper" data-close></a>
+            <a href="#book" class="svc-panel-link" data-close></a>
           </div>
         </div>
       </dialog>

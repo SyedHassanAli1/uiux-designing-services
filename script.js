@@ -533,6 +533,9 @@
           opener = btn;
           document.documentElement.classList.add('svc-panel-open');
           panel.showModal();
+          var body = $('.svc-panel-body');
+          body.scrollTop = 0;
+          panel.classList.toggle('is-scrollable', body.scrollHeight > body.clientHeight + 1);
           $('.svc-panel-close').focus();
         });
       });
