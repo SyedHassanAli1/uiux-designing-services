@@ -2161,23 +2161,31 @@ html.svc-panel-open { overflow: hidden; }
   padding: 1.5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.25rem;
+  align-items: stretch;
+  gap: 0.75rem;
 }
 
 .svc-panel-actions .btn { width: 100%; }
 
-/* Desktop: secondary action as an arrow link (unchanged look) */
+/* Secondary action: full-width outlined button, centred like the primary */
 .svc-panel-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
+  padding: 0.9rem 1.6rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #F5F5F3;
-  transition: gap .18s ease;
+  border: 1px solid rgba(245, 245, 243, 0.22);
+  border-radius: 999px;
+  transition: border-color .18s ease, background-color .18s ease;
 }
 
-.svc-panel-link:hover { gap: 0.6rem; }
+.svc-panel-link:hover {
+  border-color: rgba(245, 245, 243, 0.5);
+  background: rgba(255, 255, 255, 0.04);
+}
 
 .svc-panel-link:focus-visible {
   outline: 3px solid #7FE85A;
@@ -2221,22 +2229,9 @@ html.svc-panel-open { overflow: hidden; }
 
   .svc-panel-body { padding: 0 1.5rem 0.25rem; }
 
-  /* Two full-width, centred buttons: primary filled, secondary outlined */
   .svc-panel-actions {
-    align-items: stretch;
-    gap: 0.75rem;
     padding: 1rem 1.5rem calc(1.25rem + env(safe-area-inset-bottom));
   }
-
-  .svc-panel-link {
-    justify-content: center;
-    padding: 0.9rem 1.6rem;
-    font-size: 0.95rem;
-    border: 1px solid rgba(245, 245, 243, 0.22);
-    border-radius: 999px;
-  }
-
-  .svc-panel-link:hover { gap: 0.35rem; border-color: rgba(245, 245, 243, 0.5); }
 
   .svc-panel[open]       { animation-name: svcSheetIn; }
   .svc-panel.is-closing  { animation-name: svcSheetOut; }
