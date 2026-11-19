@@ -505,6 +505,7 @@
 
       var $ = function (sel) { return panel.querySelector(sel); };
       var opener = null;
+      var savedY = 0;
 
       grid.classList.add('is-enhanced');
       grid.querySelectorAll('.svc-more').forEach(function (btn) {
@@ -531,11 +532,10 @@
           pl.href = link.getAttribute('href');
           pl.innerHTML = link.innerHTML;
           opener = btn;
+          savedY = window.scrollY;
           document.documentElement.classList.add('svc-panel-open');
           panel.showModal();
-          var body = $('.svc-panel-body');
-          body.scrollTop = 0;
-          panel.classList.toggle('is-scrollable', body.scrollHeight > body.clientHeight + 1);
+          $('.svc-panel-body').scrollTop = 0;
           $('.svc-panel-close').focus();
         });
       });
@@ -548,9 +548,12 @@
         setTimeout(function () { panel.classList.remove('is-closing'); panel.close(); }, 220);
       }
 
+      /* Keep the page exactly where it was: native focus restore + the html
+         overflow toggle (with smooth scroll on html) can otherwise move it. */
+      function restoreScroll() { window.scrollTo({ top: savedY, left: 0, behavior: 'instant' }); }
       panel.addEventListener('close', function () {
         document.documentElement.classList.remove('svc-panel-open');
-        if (opener) opener.focus({ preventScroll: true });
+        if (opener) { opener.focus({ preventScroll: true }); restoreScroll(); requestAnimationFrame(restoreScroll); }
       });
       panel.addEventListener('cancel', function (e) { e.preventDefault(); close(); }); /* Esc */
       $('.svc-panel-close').addEventListener('click', close);
