@@ -1853,8 +1853,8 @@ body {
 
 /* ============================================================
    SERVICES — 6 cards (homepage)
-   Tablet + desktop 2 cols (3 cols left large empty gaps with the long copy)
-   Mobile: horizontal swipe (scroll-snap), equal-height cards
+   Desktop 3 cols · tablet 2 cols · mobile horizontal swipe (scroll-snap)
+   With JS, descriptions clamp to 3 lines and "Read more" opens #svcPanel
    ============================================================ */
 .svc-head {
   display: grid;
@@ -1884,6 +1884,10 @@ body {
 
 @media (min-width: 640px) {
   .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .svc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .svc-card {
@@ -1996,4 +2000,205 @@ body {
     letter-spacing: 0.08em;
     color: rgba(17, 17, 18, 0.5);
   }
+}
+
+/* --- Clamp + Read more (only when JS has enhanced the grid) --- */
+.svc-grid.is-enhanced .svc-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+/* Tags move into the panel when enhanced, keeping card heights even */
+.svc-grid.is-enhanced .svc-tags { display: none; }
+
+.svc-more {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.15rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3E9B22;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.svc-more:hover { color: #111112; }
+
+.svc-more:focus-visible,
+.svc-panel-close:focus-visible {
+  outline: 3px solid #7FE85A;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- Service detail panel --- */
+html.svc-panel-open { overflow: hidden; }
+
+.svc-panel {
+  /* reset UA dialog styles */
+  margin: 0 0 0 auto;
+  padding: 0;
+  border: 0;
+  max-width: none;
+  max-height: none;
+  width: min(480px, 100vw);
+  height: 100dvh;
+  background: #0B0B0C;
+  color: #F5F5F3;
+  border-left: 1px solid rgba(245, 245, 243, 0.09);
+}
+
+.svc-panel::backdrop {
+  background: rgba(11, 11, 12, 0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.svc-panel[open] { animation: svcPanelIn .32s cubic-bezier(.2, .8, .2, 1); }
+.svc-panel[open]::backdrop { animation: svcFade .32s ease; }
+.svc-panel.is-closing { animation: svcPanelOut .22s ease forwards; }
+.svc-panel.is-closing::backdrop { animation: svcFade .22s ease reverse forwards; }
+
+@keyframes svcPanelIn  { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes svcPanelOut { from { transform: none; } to { transform: translateX(100%); } }
+@keyframes svcFade     { from { opacity: 0; } to { opacity: 1; } }
+
+.svc-panel-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 1.75rem 2rem 2rem;
+  overflow-y: auto;
+}
+
+.svc-panel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.svc-panel-close {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #F5F5F3;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(245, 245, 243, 0.12);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+
+.svc-panel-close:hover { background: rgba(255, 255, 255, 0.12); }
+
+.svc-panel-title {
+  margin-top: 1.75rem;
+  font-size: clamp(1.75rem, 3vw, 2.125rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.svc-panel-title .svc-title-sub { color: #9A9A97; font-size: 0.9375rem; margin-top: 0.4rem; }
+
+.svc-panel-hook {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #7FE85A;
+}
+
+.svc-panel-desc {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(245, 245, 243, 0.78);
+}
+
+.svc-panel-tags:empty { display: none; }
+
+.svc-panel-tags {
+  margin-top: 1.5rem;
+}
+
+.svc-panel-tags-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9A9A97;
+}
+
+.svc-panel-tags .svc-tags { display: flex; margin-top: 0.6rem; }
+.svc-panel-tags .svc-tags li { color: #F5F5F3; background: rgba(127, 232, 90, 0.16); }
+
+.svc-panel-actions {
+  margin-top: auto;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.svc-panel-actions .btn { width: 100%; }
+
+/* Mobile: bottom sheet */
+@media (max-width: 639px) {
+  .svc-panel {
+    margin: auto 0 0 0;
+    width: 100vw;
+    height: auto;
+    max-height: 88dvh;
+    border-left: 0;
+    border-top: 1px solid rgba(245, 245, 243, 0.09);
+    border-radius: 24px 24px 0 0;
+  }
+
+  .svc-panel-inner {
+    max-height: 88dvh;
+    padding: 1.25rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
+  }
+
+  .svc-panel-inner::before {           /* grab handle */
+    content: "";
+    align-self: center;
+    width: 2.5rem;
+    height: 4px;
+    margin-bottom: 1rem;
+    border-radius: 999px;
+    background: rgba(245, 245, 243, 0.25);
+  }
+
+  /* Keep the CTA visible while the description scrolls */
+  .svc-panel-actions {
+    position: sticky;
+    bottom: calc(-1.5rem - env(safe-area-inset-bottom));
+    margin-inline: -1.5rem;
+    margin-bottom: calc(-1.5rem - env(safe-area-inset-bottom));
+    padding: 1rem 1.5rem calc(1.25rem + env(safe-area-inset-bottom));
+    background: linear-gradient(to bottom, rgba(11, 11, 12, 0) 0, #0B0B0C 1rem);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .svc-panel[open]       { animation-name: svcSheetIn; }
+  .svc-panel.is-closing  { animation-name: svcSheetOut; }
+}
+
+@keyframes svcSheetIn  { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes svcSheetOut { from { transform: none; } to { transform: translateY(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-panel[open], .svc-panel.is-closing,
+  .svc-panel[open]::backdrop, .svc-panel.is-closing::backdrop { animation: none; }
 }

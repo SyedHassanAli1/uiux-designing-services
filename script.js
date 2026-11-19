@@ -495,3 +495,66 @@
         if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
       }, {passive: true});
     })();
+
+    /* --- Services: clamp descriptions + "Read more" detail panel ---
+       Full text stays in each card (SEO). Without JS, cards show full text. */
+    (function () {
+      var grid = document.getElementById('svcGrid');
+      var panel = document.getElementById('svcPanel');
+      if (!grid || !panel || typeof panel.showModal !== 'function') return;
+
+      var $ = function (sel) { return panel.querySelector(sel); };
+      var opener = null;
+
+      grid.classList.add('is-enhanced');
+      grid.querySelectorAll('.svc-more').forEach(function (btn) {
+        btn.hidden = false;
+        btn.setAttribute('aria-controls', 'svcPanel');
+        btn.addEventListener('click', function () {
+          var card = btn.closest('.svc-card');
+          var link = card.querySelector('.svc-link');
+          var tags = card.querySelector('.svc-tags');
+          $('.svc-panel-title').innerHTML = card.querySelector('h3').innerHTML;
+          $('.svc-panel-hook').textContent = card.querySelector('.svc-hook').textContent;
+          $('.svc-panel-desc').textContent = card.querySelector('.svc-desc').textContent;
+          var tagBox = $('.svc-panel-tags');
+          tagBox.innerHTML = '';
+          if (tags) {
+            var label = document.createElement('p');
+            label.className = 'svc-panel-tags-label';
+            label.textContent = 'You receive';
+            tagBox.appendChild(label);
+            tagBox.appendChild(tags.cloneNode(true));
+          }
+          var pl = $('.svc-panel-link');
+          pl.href = link.getAttribute('href');
+          pl.innerHTML = link.innerHTML;
+          opener = btn;
+          document.documentElement.classList.add('svc-panel-open');
+          panel.showModal();
+          $('.svc-panel-close').focus();
+        });
+      });
+
+      function close() {
+        if (!panel.open || panel.classList.contains('is-closing')) return;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) { panel.close(); return; }
+        panel.classList.add('is-closing');
+        setTimeout(function () { panel.classList.remove('is-closing'); panel.close(); }, 220);
+      }
+
+      panel.addEventListener('close', function () {
+        document.documentElement.classList.remove('svc-panel-open');
+        if (opener) opener.focus({ preventScroll: true });
+      });
+      panel.addEventListener('cancel', function (e) { e.preventDefault(); close(); }); /* Esc */
+      $('.svc-panel-close').addEventListener('click', close);
+      panel.addEventListener('click', function (e) { if (e.target === panel) close(); }); /* backdrop */
+      panel.querySelectorAll('[data-close]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          panel.close();               /* close instantly so the anchor scroll isn't blocked */
+          opener = null;
+        });
+      });
+    })();
