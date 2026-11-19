@@ -514,7 +514,8 @@
           var card = btn.closest('.svc-card');
           var link = card.querySelector('.svc-link');
           var tags = card.querySelector('.svc-tags');
-          $('.svc-panel-title').innerHTML = card.querySelector('h3').innerHTML;
+          var h3 = card.querySelector('h3');
+          $('.svc-panel-title').innerHTML = h3.getAttribute('data-panel-title') || h3.innerHTML;
           $('.svc-panel-hook').textContent = card.querySelector('.svc-hook').textContent;
           $('.svc-panel-desc').textContent = card.querySelector('.svc-desc').textContent;
           var tagBox = $('.svc-panel-tags');

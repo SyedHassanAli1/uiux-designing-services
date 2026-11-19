@@ -1907,6 +1907,7 @@ body {
 
 .svc-hook {
   margin-top: 0.75rem;
+  min-height: 2.9em;           /* reserve 2 lines so every card (and every row) is the same height */
   font-size: 1.0625rem;
   font-weight: 600;
   line-height: 1.45;
