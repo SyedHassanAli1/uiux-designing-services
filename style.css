@@ -2040,27 +2040,25 @@ body {
 
 /* --- Service detail panel ---
    Structure: fixed head (eyebrow, close, title) · scrollable body · fixed actions.
-   Height always follows the content, up to a max; past that only the body scrolls.
-   Desktop: floating panel on the right. Mobile: bottom sheet.
-   Note: <dialog>:modal is position:fixed with inset:0, so the opposite inset is
-   set to auto — otherwise the panel stretches to the max height. */
-html.svc-panel-open { overflow: hidden; scrollbar-gutter: stable; }
+   Desktop (>=640px): full-height side panel on the right.
+   Mobile: bottom sheet whose height follows its content (max 88dvh); past that
+   only the body scrolls. <dialog>:modal is position:fixed with inset:0, so the
+   sheet sets top:auto — otherwise it stretches to the max height. */
+html.svc-panel-open { overflow: hidden; }
 
 .svc-panel {
   /* reset UA dialog styles */
-  inset: 1rem 1rem auto auto;
-  margin: 0;
+  margin: 0 0 0 auto;
   padding: 0;
+  border: 0;
   max-width: none;
-  width: min(480px, calc(100vw - 2rem));
-  height: auto;
-  max-height: calc(100dvh - 2rem);
+  max-height: none;
+  width: min(480px, 100vw);
+  height: 100dvh;
   overflow: hidden;
   background: #0B0B0C;
   color: #F5F5F3;
-  border: 1px solid rgba(245, 245, 243, 0.1);
-  border-radius: 24px;
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+  border-left: 1px solid rgba(245, 245, 243, 0.09);
 }
 
 .svc-panel::backdrop {
@@ -2074,14 +2072,14 @@ html.svc-panel-open { overflow: hidden; scrollbar-gutter: stable; }
 .svc-panel.is-closing { animation: svcPanelOut .22s ease forwards; }
 .svc-panel.is-closing::backdrop { animation: svcFade .22s ease reverse forwards; }
 
-@keyframes svcPanelIn  { from { transform: translateX(calc(100% + 1rem)); } to { transform: none; } }
-@keyframes svcPanelOut { from { transform: none; } to { transform: translateX(calc(100% + 1rem)); } }
+@keyframes svcPanelIn  { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes svcPanelOut { from { transform: none; } to { transform: translateX(100%); } }
 @keyframes svcFade     { from { opacity: 0; } to { opacity: 1; } }
 
 .svc-panel-inner {
   display: flex;
   flex-direction: column;
-  max-height: calc(100dvh - 2rem);
+  height: 100%;
 }
 
 .svc-panel-head {
@@ -2125,7 +2123,7 @@ html.svc-panel-open { overflow: hidden; scrollbar-gutter: stable; }
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  padding: 0 2rem 0.5rem;
+  padding: 0 2rem 1.5rem;
 }
 
 .svc-panel-hook {
@@ -2191,7 +2189,9 @@ html.svc-panel-open { overflow: hidden; scrollbar-gutter: stable; }
 @media (max-width: 639px) {
   .svc-panel {
     inset: auto 0 0 0;                 /* anchor to bottom; height follows content */
+    margin: 0;
     width: 100vw;
+    height: auto;
     max-height: 88dvh;                 /* past this, only the body scrolls */
     border: 0;
     border-top: 1px solid rgba(245, 245, 243, 0.09);
@@ -2199,7 +2199,7 @@ html.svc-panel-open { overflow: hidden; scrollbar-gutter: stable; }
     box-shadow: none;
   }
 
-  .svc-panel-inner { max-height: 88dvh; }
+  .svc-panel-inner { height: auto; max-height: 88dvh; }
 
   .svc-panel-head {
     display: flex;
