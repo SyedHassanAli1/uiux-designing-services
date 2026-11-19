@@ -191,38 +191,72 @@
   <main>
 
     <!-- ============================================================ 2 · HERO (dark) — split layout: content left, value points right ============================================================ -->
-    <section id="hero" class="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28" aria-labelledby="hero-title">
+    <section id="hero" class="relative overflow-hidden pt-28 pb-20 md:pt-32 md:pb-24" aria-labelledby="hero-title">
       <!-- One blurred accent shape behind heading -->
       <div class="blob blob-accent parallax w-[520px] h-[520px] -top-24 -left-32" aria-hidden="true"></div>
 
       <div class="shell relative z-10 hero-grid">
-        <!-- Left: message + CTAs -->
+        <!-- Left: message + CTAs (on mobile, display:contents lets proof slot under the CTAs) -->
         <div class="hero-main">
           <p class="eyebrow text-accent reveal">UI/UX Design Agency</p>
           <h1 id="hero-title" class="h-display h-hero-split mt-6 reveal">
             The UI UX design agency that fixes where your users <span class="accent-word">give&nbsp;up</span>
           </h1>
 
-          <p class="hero-sub mt-7 reveal">
-            <span class="hero-sub-lead">We are a UI UX design agency for startups, agencies and enterprise teams in the
-              United States, United Kingdom, Australia and Canada, and for clients across the Gulf, Italy, Turkey,
-              Brazil, Japan, Indonesia and beyond.</span>
-            <span class="hero-sub-rest">We study how people use your product, design the interface in Figma, and build
-              it in Angular or React, so what you approve is what ships.</span>
-          </p>
+          <div class="hero-sub-wrap mt-7 reveal">
+            <!-- Full SEO paragraph always stays in the DOM; on mobile it is visually clamped with a Read more toggle -->
+            <p id="heroSub" class="hero-sub">
+              <span class="hero-sub-lead">We are a UI UX design agency for startups, agencies and enterprise teams in
+                the United States, United Kingdom, Australia and Canada, and for clients across the Gulf, Italy, Turkey,
+                Brazil, Japan, Indonesia and beyond.</span>
+              <span class="hero-sub-rest">We study how people use your product, design the interface in Figma, and
+                build it in Angular or React, so what you approve is what ships.</span>
+            </p>
+            <button type="button" class="hero-more" aria-controls="heroSub" aria-expanded="false" hidden>Read more</button>
+          </div>
 
-          <div class="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 reveal">
+          <div class="hero-ctas mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 reveal">
             <a href="#book" class="btn btn-primary justify-center">Book a Discovery Call</a>
             <a href="#book" class="btn btn-ghost-dark justify-center">Get a UX Audit</a>
           </div>
 
-          <p class="hero-note mt-5 reveal">
+          <p class="hero-note reveal">
             One team for UX, UI design and frontend development. We plan calls around your time zone, wherever your
             team works.
           </p>
+        </div>
+
+        <!-- Right: three value points + social proof -->
+        <div class="hero-aside">
+          <ul class="hero-points" aria-label="How we work">
+            <li class="hero-point reveal">
+              <span class="hero-point-num" aria-hidden="true">01</span>
+              <div>
+                <p class="hero-point-title">Research first.</p>
+                <p class="hero-point-text">Every design decision traces back to something we learned about your users,
+                  not a mood board.</p>
+              </div>
+            </li>
+            <li class="hero-point reveal">
+              <span class="hero-point-num" aria-hidden="true">02</span>
+              <div>
+                <p class="hero-point-title">Design that gets built.</p>
+                <p class="hero-point-text">The same team designs in Figma and builds in Angular, React and Sass, so
+                  nothing is lost between the screen and the code.</p>
+              </div>
+            </li>
+            <li class="hero-point reveal">
+              <span class="hero-point-num" aria-hidden="true">03</span>
+              <div>
+                <p class="hero-point-title">Clear next steps.</p>
+                <p class="hero-point-text">You always know what is happening this week and what you will receive at
+                  the end of it.</p>
+              </div>
+            </li>
+          </ul>
 
           <!-- Social proof: avatar cluster + stats [placeholder — confirm real figures before launch] -->
-          <div class="mt-8 flex items-center gap-4 reveal">
+          <div class="hero-proof reveal">
             <div class="flex -space-x-3" aria-hidden="true">
               <span class="w-10 h-10 rounded-full ring-2 ring-canvas bg-gradient-to-br from-accent/70 to-emerald-700"></span>
               <span class="w-10 h-10 rounded-full ring-2 ring-canvas bg-gradient-to-br from-neutral-400 to-neutral-700"></span>
@@ -238,34 +272,6 @@
             </p>
           </div>
         </div>
-
-        <!-- Right: three value points -->
-        <ul class="hero-points" aria-label="How we work">
-          <li class="hero-point reveal">
-            <span class="hero-point-num" aria-hidden="true">01</span>
-            <div>
-              <p class="hero-point-title">Research first.</p>
-              <p class="hero-point-text">Every design decision traces back to something we learned about your users,
-                not a mood board.</p>
-            </div>
-          </li>
-          <li class="hero-point reveal">
-            <span class="hero-point-num" aria-hidden="true">02</span>
-            <div>
-              <p class="hero-point-title">Design that gets built.</p>
-              <p class="hero-point-text">The same team designs in Figma and builds in Angular, React and Sass, so
-                nothing is lost between the screen and the code.</p>
-            </div>
-          </li>
-          <li class="hero-point reveal">
-            <span class="hero-point-num" aria-hidden="true">03</span>
-            <div>
-              <p class="hero-point-title">Clear next steps.</p>
-              <p class="hero-point-text">You always know what is happening this week and what you will receive at the
-                end of it.</p>
-            </div>
-          </li>
-        </ul>
       </div>
     </section>
 

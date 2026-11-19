@@ -1663,18 +1663,39 @@ body {
 /* ============================================================
    HERO — split layout (homepage)
    Scoped classes so the shared .h-hero used on service pages is untouched.
+   Mobile: one column; .hero-main/.hero-aside become display:contents so the
+   social proof can sit directly under the CTAs, above the note and the cards.
+   Desktop (>=1024px): two columns; proof sits under the cards on the right.
    ============================================================ */
 .hero-grid {
-  display: grid;
-  gap: 3rem;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
+
+.hero-main,
+.hero-aside {
+  display: contents;
+}
+
+.hero-proof { order: 2; margin-top: 2rem; }
+.hero-note  { order: 3; margin-top: 1.25rem; }
+.hero-points { order: 4; margin-top: 3rem; }
 
 @media (min-width: 1024px) {
   .hero-grid {
-    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-    gap: 4.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 4rem;
+    align-items: center;
   }
+
+  .hero-main,
+  .hero-aside {
+    display: block;
+  }
+
+  .hero-points { margin-top: 0; }
+  .hero-proof  { margin-top: 1.5rem; padding-left: 0.25rem; }
 }
 
 .h-hero-split {
@@ -1684,16 +1705,19 @@ body {
 }
 
 @media (min-width: 1024px) {
-  .h-hero-split { max-width: 15ch; }
+  .h-hero-split {
+    font-size: clamp(3rem, 4.2vw, 3.6rem);
+    max-width: none;
+  }
 }
 
 .hero-sub {
-  max-width: 36rem;
+  max-width: 42rem;
 }
 
 .hero-sub-lead {
   display: block;
-  font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
+  font-size: clamp(1.0625rem, 1.3vw, 1.125rem);
   line-height: 1.6;
   color: rgba(245, 245, 243, 0.86);
 }
@@ -1706,6 +1730,39 @@ body {
   color: #9A9A97;
 }
 
+/* Mobile "Read more" — JS adds .is-clamped, so without JS the full text shows */
+.hero-more {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #7FE85A;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero-more:focus-visible {
+  outline: 2px solid #7FE85A;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (max-width: 639px) {
+  .hero-sub.is-clamped {
+    max-height: 5.1em;           /* ~3 lines of the lead sentence */
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-more { display: none !important; }
+}
+
 .hero-note {
   max-width: 32rem;
   font-size: 0.875rem;
@@ -1713,12 +1770,17 @@ body {
   color: #9A9A97;
 }
 
+.hero-proof {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 /* Value points */
 .hero-points {
   display: grid;
   gap: 0.875rem;
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 

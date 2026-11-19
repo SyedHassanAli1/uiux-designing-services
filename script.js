@@ -457,3 +457,20 @@
         }
       }
     })();
+
+    /* --- Hero subhead: mobile "Read more" toggle ---
+       The full paragraph always stays in the DOM (SEO). JS adds .is-clamped,
+       so without JS the text is simply shown in full. CSS only clamps < 640px. */
+    (function () {
+      var sub = document.getElementById('heroSub');
+      var btn = document.querySelector('.hero-more');
+      if (!sub || !btn) return;
+      sub.classList.add('is-clamped');
+      btn.hidden = false;
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        sub.classList.toggle('is-clamped', open);
+        btn.setAttribute('aria-expanded', String(!open));
+        btn.textContent = open ? 'Read more' : 'Show less';
+      });
+    })();
