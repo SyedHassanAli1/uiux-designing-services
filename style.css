@@ -1698,6 +1698,21 @@ body {
   .hero-proof  { margin-top: 1.5rem; padding-left: 0.25rem; }
 }
 
+/* Desktop: hero fills the first screen and centres its content vertically.
+   Top padding clears the fixed nav; capped so very tall screens don't get a
+   cavernous hero. If content is taller than the screen, it simply grows. */
+@media (min-width: 1024px) {
+  #hero.hero-fill {
+    display: flex;
+    align-items: center;
+    min-height: min(100svh, 980px);
+    padding-top: 6.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  #hero.hero-fill > .shell { width: 100%; }
+}
+
 .h-hero-split {
   font-size: clamp(2.5rem, 5.6vw, 4.5rem);
   line-height: 1.02;
